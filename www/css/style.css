@@ -1,0 +1,89 @@
+img{
+    width: 300px;
+    border-bottom-style: solid;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.personagem{
+    width: 300px;
+    margin: 20px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+body{
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+.pesquisa{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#inputPesquisar{
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f00;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(250, 250, 250, 0.1);
+}
+
+#inputPesquisar:focus{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.topo{
+    background-color: #f10000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img{
+    max-width: 175px;
+}
+
+.btnPesquisar {
+    background-color: #f00;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer
+}
+
+.btnPesquisar:hover {
+    background-color: rgb(241, 10, 10);
+}
+
+.titulo {
+    text-align: center;
+    margin: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+.mobile-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333; /* Cor de fundo do menu */
+    padding: 10px;
+}
+
+.mobile-menu a {
+    color: white; /* Cor do texto do menu */
+    text-decoration: none;
+    margin: 0 15px; /* Espaçamento entre os links */
+    font-size: 16px;
+}

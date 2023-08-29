@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Marvel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="personagens.js"></script>
+    <script type="text/javascript" src="pesquisaPersonagens.js"></script>
+    <link rel="stylesheet" href="carregar.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">   
+</head>
+<body>
+    <header class="topo mobile-header">
+        <div class="logo">
+            <img class="mobile-logo" src="logo.png" alt="logo">
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Personagens</a>
+        <a href="#">Histórias</a>
+        <a href="#">Games</a>
+        <a href="#">Eventos</a>
+    </div>
+
+    <main>
+        <h1 class="titulo">Personagens</h1>
+        <div class="pesquisa">
+            <input type="text" id="inputPesquisar" placeholder="pesquisar">
+            <button class="btnPesquisar" id="btnPesquisar">Pesquisar</button>
+        </div>
+        <div id="personagens" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
+</main>
+
+<script>
+
+
+
+fetch('http://gateway.marvel.com/v1/public/characters?ts=1691088785&apikey=c703b4efeca0fba44b3282021d892176&hash=66a6c830908eb3e61680b91f278e4667')
+.then(response => response.json())
+.then(jsonParsed => {
+    const divPersonagem = document.getElementById('personagens');
+
+    jsonParsed.data.results.forEach(element => {
+        const srcImage = element.thumbnail.path + "." + element.thumbnail.extension;
+        const nomePersonagem = element.name;
+        createDivPersonagem(srcImage, nomePersonagem, divPersonagem);
+    });
+    
+    function createDivPersonagem(srcImage, nomePersonagem, divToAppend){
+        const divPai = document.createElement('div');
+        const divFilho = document.createElement('div');
+        const textName = document.createElement('text'); 
+        const img = document.createElement('img');
+
+        textName.textContent = nomePersonagem;
+        img.src = srcImage;
+
+        divFilho.appendChild(img);
+        divFilho.appendChild(textName);
+        divPai.appendChild(divFilho);
+        divToAppend.appendChild(divPai);
+
+        divPai.classList.add("personagem");
+    }
+    console.log(jsonParsed);
+});
+<script>
+</body>
+</html>
