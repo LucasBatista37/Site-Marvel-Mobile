@@ -18,11 +18,11 @@
         <a href="index.html">Personagens</a>
         <a href="historias.html">Histórias</a>
         <a href="series.html">Series</a>
-        <a href="quadrinhos.html">Quadrinhos</a>
+        <a href="eventos.html">Eventos</a>
     </div>
 
     <main>
-        <h1 class="titulo">Personagens</h1>
+        <h1 class="titulo">Series</h1>
         <div class="pesquisa">
             <input type="text" id="inputPesquisar" placeholder="pesquisar">
             <button class="btnPesquisar" id="btnPesquisar">Pesquisar</button>
@@ -37,7 +37,7 @@
         const privateKey = '8e32b177b450fa8dd81bc5d65eddcb55f26c6e92';
         const timestamp = new Date().getTime();
         const hash = md5(`${timestamp}${privateKey}${publicKey}`);
-        const apiUrl = 'https://gateway.marvel.com/v1/public/characters';
+        const apiUrl = 'https://gateway.marvel.com/v1/public/series';
         const fullUrl = `${apiUrl}?apikey=${publicKey}&ts=${timestamp}&hash=${hash}`;
 
         fetch(fullUrl)

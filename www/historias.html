@@ -22,7 +22,7 @@
     </div>
 
     <main>
-        <h1 class="titulo">Personagens</h1>
+        <h1 class="titulo">Histórias</h1>
         <div class="pesquisa">
             <input type="text" id="inputPesquisar" placeholder="pesquisar">
             <button class="btnPesquisar" id="btnPesquisar">Pesquisar</button>
@@ -37,7 +37,7 @@
         const privateKey = '8e32b177b450fa8dd81bc5d65eddcb55f26c6e92';
         const timestamp = new Date().getTime();
         const hash = md5(`${timestamp}${privateKey}${publicKey}`);
-        const apiUrl = 'https://gateway.marvel.com/v1/public/characters';
+        const apiUrl = 'https://gateway.marvel.com/v1/public/creators';
         const fullUrl = `${apiUrl}?apikey=${publicKey}&ts=${timestamp}&hash=${hash}`;
 
         fetch(fullUrl)
