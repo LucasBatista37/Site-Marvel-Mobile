@@ -19,6 +19,7 @@
             <img class="mobile-logo" src="logo.png" alt="logo">
         </div>
         <nav class="menu">
+            <button class="fechar">X</button>
             <ul>
                 <li><a href="perfil.html">Perfil</a></li>
                 <li><a href="sobre-nos.html">Sobre Nós</a></li>
@@ -49,7 +50,7 @@
         const privateKey = '8e32b177b450fa8dd81bc5d65eddcb55f26c6e92';
         const timestamp = new Date().getTime();
         const hash = md5(`${timestamp}${privateKey}${publicKey}`);
-        const apiUrl = 'https://gateway.marvel.com/v1/public/comics';
+        const apiUrl = 'https://gateway.marvel.com/v1/public/series';
         const fullUrl = `${apiUrl}?apikey=${publicKey}&ts=${timestamp}&hash=${hash}`;
 
         fetch(fullUrl)
