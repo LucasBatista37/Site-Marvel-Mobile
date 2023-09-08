@@ -60,7 +60,7 @@
 
                 jsonParsed.data.results.forEach(element => {
                     const srcImage = element.thumbnail.path + "." + element.thumbnail.extension;
-                    const nomePersonagem = element.name;
+                    const nomePersonagem = element.title;
                     createDivPersonagem(srcImage, nomePersonagem, divPersonagem);
                 });
 

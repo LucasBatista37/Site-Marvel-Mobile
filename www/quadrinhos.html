@@ -6,25 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Marvel</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="interagir.js"></script>
 </head>
 <body>
     <header class="topo mobile-header">
-        <button class="menu-button">
-        <i class="fas fa-bars"></i>
-        </button>
         <div class="logo">
             <img class="mobile-logo" src="logo.png" alt="logo">
         </div>
-        <nav class="menu">
-            <button class="fechar">X</button>
-            <ul>
-                <li><a href="perfil.html">Perfil</a></li>
-                <li><a href="sobre-nos.html">Sobre Nós</a></li>
-            </ul>
-        </nav>
     </header>
 
     <div class="mobile-menu" id="mobileMenu">
@@ -60,7 +47,7 @@
 
                 jsonParsed.data.results.forEach(element => {
                     const srcImage = element.thumbnail.path + "." + element.thumbnail.extension;
-                    const nomePersonagem = element.name;
+                    const nomePersonagem = element.title;
                     createDivPersonagem(srcImage, nomePersonagem, divPersonagem);
                 });
 
@@ -86,6 +73,7 @@
             .catch(error => {
                 console.error('Erro ao fazer a requisição:', error);
             });
+
     </script>
 </body>
 </html>
