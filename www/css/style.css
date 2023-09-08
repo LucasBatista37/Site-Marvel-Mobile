@@ -17,6 +17,63 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
+.fechar {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: hidden;
+    transition: 0.4s;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    margin-bottom: 23px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.menu-button{
+    width: 10px;
+    padding: 10px;
+    size: 10px;
+    margin-left: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-button:focus + .menu, .menu-button.active + .menu {
+    display: block; 
+}
+
 .pesquisa{
     display: flex;
     justify-content: center;
@@ -77,13 +134,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333; /* Cor de fundo do menu */
+    background-color: #333; 
     padding: 10px;
 }
 
 .mobile-menu a {
-    color: white; /* Cor do texto do menu */
+    color: white; 
     text-decoration: none;
-    margin: 0 15px; /* Espaçamento entre os links */
+    margin: 0 15px; 
     font-size: 16px;
 }
