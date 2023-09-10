@@ -1,15 +1,53 @@
-img{
-    width: 300px;
-    border-bottom-style: solid;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-}
-
-.personagem{
+.personagem {
     width: 300px;
     margin: 20px;
     border-radius: 16px;
     text-align: center;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.2s;
+}
+
+.personagem img {
+    width: 100%;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.personagem .name {
+    font-size: 20px;
+    color: #000000;
+    padding: 10px; 
+}
+
+.personagem .description {
+    font-size: 16px;
+    color: #333;
+    padding: 10px; 
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 0 0 16px 16px;
+}
+
+.personagem:hover {
+    transform: scale(1.05);
+}
+
+.description {
+    display: none;
+}
+
+button {
+    background-color: #f00;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #f10000;
 }
 
 body{
@@ -24,8 +62,9 @@ body{
     font-size: 24px;
     color: #fff;
     cursor: pointer;
-    top: 10px;
-    right: 10px;
+    left: 5px; 
+    margin-left: 10px; 
+    z-index: 2;
 }
 
 .menu {
@@ -38,7 +77,7 @@ body{
     color: #fff;
     font-size: 20px;
     padding: 20px;
-    z-index: 1000;
+    z-index: 1;
     overflow-y: hidden;
     transition: 0.4s;
     opacity: 0;
@@ -46,6 +85,7 @@ body{
 }
 
 .menu ul {
+    margin-top: 70px;
     list-style-type: none;
     padding: 0;
 }
