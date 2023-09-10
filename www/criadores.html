@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="interagir.js"></script>
-    <script src="darkmode.js"></script>
 </head>
 <body>
     <header class="topo mobile-header">
@@ -25,7 +24,6 @@
                 <li><a href="perfil.html">Perfil</a></li>
                 <li><a href="sobre-nos.html">Sobre Nós</a></li>
             </ul>
-            <button id="dark-mode-button">Modo Escuro</button>
         </nav>
     </header>
 
@@ -37,7 +35,7 @@
     </div>
 
     <main>
-        <h1 class="titulo">Personagens</h1>
+        <h1 class="titulo">Criadores</h1>
         <div class="pesquisa">
             <input type="text" id="inputPesquisar" placeholder="pesquisar">
             <button class="btnPesquisar" id="btnPesquisar">Pesquisar</button>
@@ -52,7 +50,7 @@
         const privateKey = '8e32b177b450fa8dd81bc5d65eddcb55f26c6e92';
         const timestamp = new Date().getTime();
         const hash = md5(`${timestamp}${privateKey}${publicKey}`);
-        const apiUrl = 'https://gateway.marvel.com/v1/public/characters';
+        const apiUrl = 'https://gateway.marvel.com/v1/public/creators';
         const fullUrl = `${apiUrl}?apikey=${publicKey}&ts=${timestamp}&hash=${hash}`;
 
     fetch(fullUrl)
@@ -62,7 +60,7 @@
 
         jsonParsed.data.results.forEach(element => {
             const srcImage = element.thumbnail.path + "." + element.thumbnail.extension;
-            const nomePersonagem = element.name;
+            const nomePersonagem = element.fullName;
             const description = element.description;
 
             createDivPersonagem(srcImage, nomePersonagem, description, divPersonagem);

@@ -29,7 +29,7 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <a href="index.html">Personagens</a>
-        <a href="historias.html">Histórias</a>
+        <a href="criadores.html">Criadores</a>
         <a href="series.html">Series</a>
         <a href="quadrinhos.html">Quadrinhos</a>
     </div>
@@ -53,39 +53,53 @@
         const apiUrl = 'https://gateway.marvel.com/v1/public/comics';
         const fullUrl = `${apiUrl}?apikey=${publicKey}&ts=${timestamp}&hash=${hash}`;
 
-        fetch(fullUrl)
-            .then(response => response.json())
-            .then(jsonParsed => {
-                const divPersonagem = document.querySelector('#personagens');
+    fetch(fullUrl)
+    .then(response => response.json())
+    .then(jsonParsed => {
+        const divPersonagem = document.querySelector('#personagens');
 
-                jsonParsed.data.results.forEach(element => {
-                    const srcImage = element.thumbnail.path + "." + element.thumbnail.extension;
-                    const nomePersonagem = element.title;
-                    createDivPersonagem(srcImage, nomePersonagem, divPersonagem);
-                });
+        jsonParsed.data.results.forEach(element => {
+            const srcImage = element.thumbnail.path + "." + element.thumbnail.extension;
+            const nomePersonagem = element.title;
+            const description = element.description;
 
-                function createDivPersonagem(srcImage, nomePersonagem, divToAppend) {
-                    const divPai = document.createElement('div');
-                    const divFilho = document.createElement('div');
-                    const textName = document.createElement('text');
-                    const img = document.createElement('img');
+            createDivPersonagem(srcImage, nomePersonagem, description, divPersonagem);
+        });
 
-                    textName.textContent = nomePersonagem;
-                    img.src = srcImage;
+    function createDivPersonagem(srcImage, nomePersonagem, description, divToAppend) {
+    const divPai = document.createElement('div');
+    const divFilho = document.createElement('div');
+    const textName = document.createElement('text');
+    const img = document.createElement('img');
+    const descriptionPara = document.createElement('p');
+    const btnMostrarDescricao = document.createElement('button');
+    btnMostrarDescricao.textContent = 'Sobre';
 
-                    divFilho.appendChild(img);
-                    divFilho.appendChild(textName);
-                    divPai.appendChild(divFilho);
-                    divToAppend.appendChild(divPai);
+    textName.textContent = nomePersonagem;
+    img.src = srcImage;
+    descriptionPara.textContent = description;
 
-                    divPai.classList.add("personagem");
-                    textName.classList.add("personagem");
-                }
-                console.log(jsonParsed);
-            })
-            .catch(error => {
-                console.error('Erro ao fazer a requisição:', error);
-            });
+    descriptionPara.classList.add('description');
+
+    btnMostrarDescricao.addEventListener('click', function () {
+        descriptionPara.style.display = (descriptionPara.style.display === 'block') ? 'none' : 'block';
+    });
+
+    divFilho.appendChild(img);
+    divFilho.appendChild(textName);
+    divFilho.appendChild(btnMostrarDescricao);
+    divFilho.appendChild(descriptionPara);
+    divPai.appendChild(divFilho);
+    divToAppend.appendChild(divPai);
+
+    divPai.classList.add("personagem");
+    textName.classList.add("personagem");
+}
+        console.log(jsonParsed);
+    })
+    .catch(error => {
+        console.error('Erro ao fazer a requisição:', error);
+    });
     </script>
 </body>
 </html>

@@ -1,3 +1,28 @@
+body {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+body.dark-mode {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+#dark-mode-button {
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#dark-mode-button:hover {
+    background-color: #ffffff;
+    color: #333333;
+}
+
 .personagem {
     width: 300px;
     margin: 20px;
@@ -48,11 +73,6 @@ button {
 
 button:hover {
     background-color: #f10000;
-}
-
-body{
-    margin: 0;
-    background-color: rgb(255, 255, 255);
 }
 
 .fechar {
