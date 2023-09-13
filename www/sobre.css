@@ -1,2 +1,83 @@
-/* This is a CSS file */
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
+.topo {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.menu ul li {
+    margin-right: 20px;
+}
+
+.menu ul li:last-child {
+    margin-right: 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Estilos para a seção "Sobre Nós" */
+.sobre-nos {
+    padding: 20px;
+}
+
+.descricao h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.descricao p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.equipe h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.card-desenvolvedor {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-desenvolvedor img {
+    max-width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card-desenvolvedor h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card-desenvolvedor p {
+    font-size: 16px;
+}

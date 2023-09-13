@@ -205,3 +205,35 @@ button:hover {
     margin: 0 12px; 
     font-size: 16px;
 }
+
+.grid-view .personagem {
+    width: calc(42% - 20px);
+    margin: 20px;
+    border-radius: 16px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    display: inline-block; 
+    vertical-align: top; 
+}
+
+.grid-view .personagem img {
+    width: 100%;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.grid-view .personagem .name {
+    font-size: 20px;
+    color: #000000;
+    padding: 100px;
+}
+
+.grid-view .personagem .description {
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 0 0 16px 16px;
+}
