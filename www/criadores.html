@@ -48,12 +48,12 @@
         </button>
         <div class="pesquisa">
             <a href="criadorespes.html" class="btn btn-primary">
-                <i class="fas fa-search"></i> Pesquisar Criadores
+                <i class="fas fa-search"></i> Pesquisar Personagens
             </a>
         </div>
         <div id="personagens" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
     </main>
-
+    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
 
     <script type="text/javascript">
@@ -64,53 +64,46 @@
         const apiUrl = 'https://gateway.marvel.com/v1/public/creators';
         const fullUrl = `${apiUrl}?apikey=${publicKey}&ts=${timestamp}&hash=${hash}`;
 
-    fetch(fullUrl)
-    .then(response => response.json())
-    .then(jsonParsed => {
-        const divPersonagem = document.querySelector('#personagens');
+        fetch(fullUrl)
+            .then(response => response.json())
+            .then(jsonParsed => {
+                const divPersonagem = document.querySelector('#personagens');
 
-        jsonParsed.data.results.forEach(element => {
-            const srcImage = element.thumbnail.path + "." + element.thumbnail.extension;
-            const nomePersonagem = element.fullName;
-            const description = element.description;
+                jsonParsed.data.results.forEach(element => {
+                 const srcImage = element.thumbnail.path + "." + element.thumbnail.extension;
+                 const nomePersonagem = element.name;
+                 const description = element.description || "Descrição não disponível";
 
-            createDivPersonagem(srcImage, nomePersonagem, description, divPersonagem);
-        });
+                createDivPersonagem(srcImage, nomePersonagem, description, divPersonagem);
+                });
 
-    function createDivPersonagem(srcImage, nomePersonagem, description, divToAppend) {
-    const divPai = document.createElement('div');
-    const divFilho = document.createElement('div');
-    const textName = document.createElement('text');
-    const img = document.createElement('img');
-    const descriptionPara = document.createElement('p');
-    const btnMostrarDescricao = document.createElement('button');
-    btnMostrarDescricao.textContent = 'Sobre';
+                function createDivPersonagem(srcImage, nomePersonagem, description, divToAppend) {
+                    const divPai = document.createElement('div');
+                    const divFilho = document.createElement('div');
+                    const textName = document.createElement('text');
+                    const img = document.createElement('img');
+                    const descriptionPara = document.createElement('p');
 
-    textName.textContent = nomePersonagem;
-    img.src = srcImage;
-    descriptionPara.textContent = description;
+                    textName.textContent = nomePersonagem;
+                    img.src = srcImage;
+                    descriptionPara.textContent = description;
 
-    descriptionPara.classList.add('description');
+                    descriptionPara.classList.add('description');
 
-    btnMostrarDescricao.addEventListener('click', function () {
-        descriptionPara.style.display = (descriptionPara.style.display === 'block') ? 'none' : 'block';
-    });
+                    divFilho.appendChild(img);
+                    divFilho.appendChild(textName);
+                    divFilho.appendChild(descriptionPara);
+                    divPai.appendChild(divFilho);
+                    divToAppend.appendChild(divPai);
 
-    divFilho.appendChild(img);
-    divFilho.appendChild(textName);
-    divFilho.appendChild(btnMostrarDescricao);
-    divFilho.appendChild(descriptionPara);
-    divPai.appendChild(divFilho);
-    divToAppend.appendChild(divPai);
-
-    divPai.classList.add("personagem");
-    textName.classList.add("personagem");
-}
-        console.log(jsonParsed);
-    })
-    .catch(error => {
-        console.error('Erro ao fazer a requisição:', error);
-    });
+                    divPai.classList.add("personagem");
+                    textName.classList.add("personagem");
+                }
+                console.log(jsonParsed);
+            })
+            .catch(error => {
+                console.error('Erro ao fazer a requisição:', error);
+            });
     </script>
 </body>
 </html>

@@ -41,14 +41,14 @@
     </div>
 
     <main>
-        <h1 class="titulo">Series</h1>
+        <h1 class="titulo">Personagens</h1>
         <button id="toggle-view-button">
             <i class="fas fa-list"></i> 
             <i class="fas fa-th"></i> 
         </button>
         <div class="pesquisa">
-            <a href="seriespes.html" class="btn btn-primary">
-                <i class="fas fa-search"></i> Pesquisar Series
+            <a href="personagempes.html" class="btn btn-primary">
+                <i class="fas fa-search"></i> Pesquisar Personagens
             </a>
         </div>
         <div id="personagens" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
@@ -61,7 +61,7 @@
         const privateKey = '8e32b177b450fa8dd81bc5d65eddcb55f26c6e92';
         const timestamp = new Date().getTime();
         const hash = md5(`${timestamp}${privateKey}${publicKey}`);
-        const apiUrl = 'https://gateway.marvel.com/v1/public/series';
+        const apiUrl = 'https://gateway.marvel.com/v1/public/characters';
         const fullUrl = `${apiUrl}?apikey=${publicKey}&ts=${timestamp}&hash=${hash}`;
 
         fetch(fullUrl)
