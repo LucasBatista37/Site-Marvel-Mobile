@@ -207,7 +207,7 @@ button:hover {
 }
 
 .grid-view .personagem {
-    width: calc(42% - 20px);
+    width: calc(33.33% - 20px);
     margin: 20px;
     border-radius: 16px;
     text-align: center;
@@ -237,3 +237,52 @@ button:hover {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 0 0 16px 16px;
 }
+
+.pesquisa {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#personagens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.hero {
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.hero img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.hero h2 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.hero p {
+    font-size: 14px;
+    color: #666;
+}
+
+
+
