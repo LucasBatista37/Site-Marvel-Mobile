@@ -23,32 +23,41 @@ body.dark-mode {
     color: #333333;
 }
 
+#personagens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .personagem {
     width: 300px;
-    margin: 20px;
-    border-radius: 16px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     text-align: center;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
 }
 
 .personagem img {
-    width: 100%;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
 .personagem .name {
+    margin-top: 10px;
     font-size: 20px;
-    color: #000000;
-    padding: 10px; 
 }
 
 .personagem .description {
     font-size: 16px;
     color: #333;
-    padding: 10px; 
+    padding: 10px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 0 0 16px 16px;
 }
@@ -57,9 +66,6 @@ body.dark-mode {
     transform: scale(1.05);
 }
 
-.description {
-    display: none;
-}
 
 button {
     background-color: #f00;
@@ -283,6 +289,3 @@ button:hover {
     font-size: 14px;
     color: #666;
 }
-
-
-
