@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Marvel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="interagir.js"></script>
+    <script src="darkmode.js"></script>
+    <script src="exibir.js"></script>
+</head>
+<body>
+    <header class="topo mobile-header">
+        <button class="menu-button">
+        <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <img class="mobile-logo" src="logo.png" alt="logo">
+        </div>
+        <nav class="menu">
+            <button class="fechar">X</button>
+            <ul>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="sobre.html">Sobre Nós</a></li>
+            </ul>
+            <button id="dark-mode-button">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i> 
+            </button>   
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Personagens</a>
+        <a href="criadores.html">Criadores</a>
+        <a href="series.html">Series</a>
+        <a href="quadrinhos.html">Quadrinhos</a>
+    </div>
+
+    <main>
+        <h1 class="titulo">Quadrinhos</h1>
+        <button id="toggle-view-button">
+            <i class="fas fa-list"></i> 
+            <i class="fas fa-th"></i> 
+        </button>
+        <div class="pesquisa">
+            <input type="text" name="search" id="search" class="search" placeholder="pesquise por um Quadrinho">
+        </div>
+        <div id="personagens" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
+        </div>
+    </main>
+    
+        <script>
+            const publicKey = 'bc6189e1f8f98580674b7c342aa1d163';
+            const privateKey = '8e32b177b450fa8dd81bc5d65eddcb55f26c6e92';
+    
+            function generateHash(timestamp) {
+                const hash = CryptoJS.MD5(timestamp + privateKey + publicKey).toString();
+                return hash;
+            }
+    
+            function searchHero() {
+                const searchInput = document.getElementById("search");
+                const searchTerm = searchInput.value.trim();
+    
+                if (searchTerm === "") {
+                    return;
+                }
+    
+                const timestamp = new Date().getTime();
+                const hash = generateHash(timestamp);
+    
+                const apiUrl = `https://gateway.marvel.com/v1/public/comics?apikey=${publicKey}&ts=${timestamp}&hash=${hash}&titleStartsWith=${searchTerm}`;
+    
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        displayHeroes(data.data.results);
+                    })
+                    .catch(error => {
+                        console.error('Erro ao fazer a requisição:', error);
+                    });
+            }
+    
+            function displayHeroes(heroes) {
+                const personagensDiv = document.getElementById("personagens");
+                personagensDiv.innerHTML = "";
+    
+                heroes.forEach(hero => {
+                    const divHero = document.createElement("div");
+                    divHero.classList.add("hero");
+    
+                    const img = document.createElement("img");
+                    img.src = `${hero.thumbnail.path}.${hero.thumbnail.extension}`;
+                    img.alt = hero.name;
+    
+                    const name = document.createElement("h2");
+                    name.textContent = hero.name;
+    
+                    const description = document.createElement("p");
+                    description.textContent = hero.description || "Descrição não disponível";
+    
+                    divHero.appendChild(img);
+                    divHero.appendChild(name);
+                    divHero.appendChild(description);
+    
+                    personagensDiv.appendChild(divHero);
+                });
+            }
+    
+            const searchInput = document.getElementById("search");
+            searchInput.addEventListener("input", debounce(searchHero, 800));
+    
+            function debounce(func, delay) {
+                let timeoutId;
+                return function () {
+                    const context = this;
+                    const args = arguments;
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(function () {
+                        func.apply(context, args);
+                    }, delay);
+                };
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    </body>
+    </html>
